@@ -13,14 +13,6 @@ function drawPyramid() {
     };
 };
 
-selectBrick.on('input', function() {
-    drawPyramid();
-  });
-
-selectNumber.on('input', function() {
-    drawPyramid();
-  });
-
-$ (document).ready(function() {
-    drawPyramid();
-});
+selectBrick.on('input', drawPyramid);
+selectNumber.on('input', drawPyramid);
+$(document).ready(drawPyramid);
