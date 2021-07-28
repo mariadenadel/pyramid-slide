@@ -1,18 +1,18 @@
-let selectBrick = document.getElementById('brick');
-let selectNumber = document.getElementById('number');
-let pyramid = document.getElementById('pyramid');
+let selectBrick = $('#brick');
+let selectNumber = $('#number');
+
 
 function drawPyramid() {
-    let height = selectNumber.value;
-    let brick = selectBrick.value;
-    pyramid.innerHTML = ''
+    let height = selectNumber.val();
+    let brick = selectBrick.val();
+    $('#pyramid').text('');
     for (let i = 0; i < height; i++) {
-        let row = document.createElement('p');
-        row.innerHTML = '&nbsp;'.repeat(height - i - 1) + brick.repeat(i + 2);
-        pyramid.appendChild(row);
-    };
-}
+        let innerPyramid = '&nbsp;'.repeat(height - i - 1) + brick.repeat(i + 2);
+        $( '<p>', { html: innerPyramid } ).appendTo('#pyramid');
 
-selectBrick.addEventListener('input', drawPyramid);
-selectNumber.addEventListener('input', drawPyramid);
-window.addEventListener('DOMContentLoaded', drawPyramid)
+    };
+};
+
+selectBrick.on('input', drawPyramid);
+selectNumber.on('input', drawPyramid);
+$(document).ready(drawPyramid);
